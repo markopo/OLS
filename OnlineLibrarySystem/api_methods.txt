@@ -1,0 +1,46 @@
+
+
+
+curl --request DELETE \
+  --url http://localhost:5072/api/Books/901 \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImpvaG4iLCJuYmYiOjE2OTY4NTYxMjEsImV4cCI6MTY5NzAyODgzMywiaWF0IjoxNjk2ODU2MTIxfQ.6DCYlLtD_-kXAVKY3nx5OeiCGgQ57qK_mnQD_H3DuLg'
+  
+var client = new HttpClient();
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Delete,
+    RequestUri = new Uri("http://localhost:5072/api/Books/901"),
+    Headers =
+    {
+        { "Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImpvaG4iLCJuYmYiOjE2OTY4NTYxMjEsImV4cCI6MTY5NzAyODgzMywiaWF0IjoxNjk2ODU2MTIxfQ.6DCYlLtD_-kXAVKY3nx5OeiCGgQ57qK_mnQD_H3DuLg" },
+    },
+};
+using (var response = await client.SendAsync(request))
+{
+    response.EnsureSuccessStatusCode();
+    var body = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(body);
+}
+
+****************************************************'  
+  
+ curl --request GET \
+   --url http://localhost:5072/api/Books
+   
+   var client = new HttpClient();
+   var request = new HttpRequestMessage
+   {
+       Method = HttpMethod.Get,
+       RequestUri = new Uri("http://localhost:5072/api/Books"),
+   };
+   using (var response = await client.SendAsync(request))
+   {
+       response.EnsureSuccessStatusCode();
+       var body = await response.Content.ReadAsStringAsync();
+       Console.WriteLine(body);
+   }
+   
+   
+   
+**********************************************
+  
